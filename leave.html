@@ -4,12 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Time Off Management</title>
+
+<!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/leave.css">
 </head>
 <body>
-  <div class="container py-4">
 
+<nav class="navbar navbar-expand-lg site-navbar">
+    <div class="container-fluid">
+
+        <a class="navbar-brand logo" href="dashboard.html">
+            <svg class="icon" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="16" rx="3"></rect>
+                <path d="M3 9h18M8 2v4M16 2v4"></path>
+            </svg>
+            ModernTech HR
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">Dashboard</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="employees.html">Employees</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="payroll.html">Payroll</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="attendance.html">Attendance</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="leave.html">Time Off</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+  <div class="container py-4">
+    
     <div class="timeoff-card">
 
       <!-- Page Header -->
@@ -100,6 +156,7 @@
   <!-- Toast -->
   <div class="toast-msg" id="toastMsg"></div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
   <script src="javascript/leave.js"></script>
 </body>
 </html>
