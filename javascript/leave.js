@@ -6,6 +6,7 @@
 (function () {
   "use strict";
 
+  /* ---- Data (loaded from JSON files, see loadData()) ---- */
   let requests = [];
 
   const typeLabel = { vacation: "Vacation", sick: "Sick Leave", personal: "Personal" };
@@ -27,16 +28,6 @@
   let viewMonth = today.getMonth();
   let selectedDate = null;
 
-  // Used only if data/attendance.json can't be fetched (e.g. the file was
-  // opened directly with file://, which blocks fetch() in most browsers).
-  const FALLBACK_REQUESTS = [
-    { id: 1, name: "Sibongile Nkosi", type: "personal", status: "pending", start: "2026-06-12", end: "2026-06-12" },
-    { id: 2, name: "Lungile Moyo", type: "vacation", status: "approved", start: "2026-06-08", end: "2026-06-10" },
-    { id: 3, name: "Thabo Molefe", type: "personal", status: "pending", start: "2026-06-15", end: "2026-06-15" },
-    { id: 4, name: "Keshav Naidoo", type: "vacation", status: "approved", start: "2026-06-20", end: "2026-06-22" },
-    { id: 5, name: "Zanele Khumalo", type: "personal", status: "pending", start: "2026-06-25", end: "2026-06-25" },
-  ];
-
   /* ---- Load dummy data from JSON files ---- */
   async function loadData() {
     try {
@@ -56,10 +47,9 @@
         }))
       );
     } catch (err) {
-      console.warn("Falling back to sample data —", err.message);
-      console.warn("This usually means the page was opened directly (file://) instead of through a local server. Run something like `npx serve` in the project folder and open the localhost URL instead.");
-      showToast("Showing sample data — serve this folder to load your JSON files", "danger");
-      requests = FALLBACK_REQUESTS;
+      console.error(err);
+      showToast("Couldn't load leave data — check the file path", "danger");
+      requests = [];
     }
   }
 
@@ -90,10 +80,8 @@
   /* ---- Toast ---- */
   function showToast(msg, kind) {
     const el = document.getElementById("toastMsg");
-    const icon = kind === "success"
-      ? '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg>'
-      : '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>';
-    el.innerHTML = `${icon} ${msg}`;
+    const icon = kind === "success" ? "bi-check-circle-fill" : "bi-x-circle-fill";
+    el.innerHTML = `<i class="bi ${icon}"></i> ${msg}`;
     el.className = `toast-msg show ${kind}`;
     clearTimeout(showToast._t);
     showToast._t = setTimeout(() => { el.classList.remove("show"); }, 2400);
@@ -139,8 +127,8 @@
           </div>
         </div>
         <div class="request-actions">
-          <button class="req-btn approve" title="Approve" data-id="${r.id}" data-action="approved"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></button>
-          <button class="req-btn decline" title="Decline" data-id="${r.id}" data-action="declined"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+          <button class="req-btn approve" title="Approve" data-id="${r.id}" data-action="approved"><i class="bi bi-check2"></i></button>
+          <button class="req-btn decline" title="Decline" data-id="${r.id}" data-action="declined"><i class="bi bi-x"></i></button>
         </div>`;
       list.appendChild(item);
     });
