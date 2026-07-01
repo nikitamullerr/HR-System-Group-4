@@ -1,0 +1,594 @@
+/* ===============================
+   EMPLOYEE DIRECTORY PAGE
+================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", sans-serif;
+}
+
+body{
+    display:flex;
+    background:#eef2fa;
+    color:#0e1a33;
+    min-height:100vh;
+}
+
+/* ===============================
+   SIDEBAR
+================================== */
+
+.sidebar{
+    width:260px;
+    background:#0a1b3d;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:20px;
+}
+
+.logo-section{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:30px;
+}
+
+.logo-icon{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    background:#2f6be0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+}
+
+.logo-section h2{
+    font-size:18px;
+}
+
+.logo-section span{
+    font-size:11px;
+    color:#9cb2e8;
+}
+
+nav{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.nav-item{
+    border:none;
+    background:none;
+    color:#d9e2ff;
+    text-align:left;
+    padding:12px 15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:14px;
+    transition:.3s;
+}
+
+.nav-item:hover{
+    background:rgba(255,255,255,.08);
+}
+
+.nav-item.active{
+    background:#1746b0;
+    color:white;
+}
+
+.user-card{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:rgba(255,255,255,.06);
+    padding:12px;
+    border-radius:12px;
+}
+
+.avatar{
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    background:#2f6be0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.user-card h4{
+    font-size:14px;
+}
+
+.user-card span{
+    font-size:12px;
+    color:#9cb2e8;
+}
+
+/* ===============================
+   MAIN CONTENT
+================================== */
+
+.main-content{
+    flex:1;
+    padding:30px;
+}
+
+.section-label{
+    color:#1d4ed8;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.page-header h1{
+    margin-top:5px;
+    font-size:32px;
+}
+
+.subtitle{
+    margin-top:5px;
+    color:#6b7a99;
+}
+
+/* ===============================
+   FILTERS
+================================== */
+
+.filters{
+    margin-top:25px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.filters input,
+.filters select{
+    border:1px solid #dbe4f3;
+    background:white;
+    padding:12px 15px;
+    border-radius:10px;
+    font-size:14px;
+}
+
+#searchInput{
+    flex:1;
+    min-width:250px;
+}
+
+/* ===============================
+   TABLE
+================================== */
+
+.employee-table{
+    background:white;
+    margin-top:20px;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.table-header,
+.employee-row{
+    display:grid;
+    grid-template-columns:
+        2fr
+        1.2fr
+        1fr
+        2fr
+        1fr;
+    align-items:center;
+}
+
+.table-header{
+    background:#f5f8ff;
+    padding:18px;
+    font-size:13px;
+    font-weight:700;
+    color:#66738d;
+    text-transform:uppercase;
+}
+
+.employee-row{
+    padding:18px;
+    border-top:1px solid #edf1f8;
+}
+
+.employee-row:hover{
+    background:#fafcff;
+}
+
+.employee-info{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.employee-avatar{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    background:#2f6be0;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.employee-name{
+    font-weight:600;
+}
+
+.employee-position{
+    color:#6b7a99;
+    font-size:13px;
+}
+
+.department-pill{
+    display:inline-block;
+    background:#eef4ff;
+    color:#1746b0;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.salary{
+    font-weight:600;
+}
+
+.contact{
+    color:#6b7a99;
+    font-size:14px;
+}
+
+/* ===============================
+   ACTION BUTTONS
+================================== */
+
+.actions{
+    display:flex;
+    gap:8px;
+}
+
+.btn{
+    border:none;
+    cursor:pointer;
+    padding:8px 14px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.view-btn{
+    background:#eef4ff;
+    color:#1746b0;
+}
+
+.edit-btn{
+    background:white;
+    border:1px solid #dbe4f3;
+}
+
+/* ===============================
+   PAGINATION
+================================== */
+
+.pagination{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
+
+.pagination button{
+    border:none;
+    background:#1746b0;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* ===============================
+   MODAL
+================================== */
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    display:none;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal{
+    background:white;
+    width:500px;
+    max-width:90%;
+    border-radius:14px;
+    overflow:hidden;
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    border-bottom:1px solid #eee;
+}
+
+.modal-header button{
+    border:none;
+    background:none;
+    font-size:24px;
+    cursor:pointer;
+}
+
+#modalContent{
+    padding:20px;
+}
+
+.detail-row{
+    display:flex;
+    justify-content:space-between;
+    padding:12px 0;
+    border-bottom:1px solid #f0f0f0;
+}
+
+/* ===============================
+   RESPONSIVE
+================================== */
+
+@media(max-width:1000px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .table-header,
+    .employee-row{
+        grid-template-columns:1fr;
+        gap:10px;
+    }
+
+}
+
+/* =========================
+   DIRECTORY CARD
+========================= */
+
+.directory-card{
+    background:#ffffff;
+    border-radius:18px;
+    overflow:hidden;
+    margin-top:24px;
+    box-shadow:0 4px 16px rgba(15,23,42,.06);
+}
+
+.directory-header{
+    display:grid;
+    grid-template-columns:
+        2.4fr
+        1.2fr
+        1fr
+        1fr
+        1fr;
+
+    padding:20px 28px;
+    font-weight:700;
+    font-size:13px;
+    color:#64748b;
+    text-transform:uppercase;
+    border-bottom:1px solid #edf2f7;
+}
+
+.employee-card{
+    display:grid;
+    grid-template-columns:
+        2.4fr
+        1.2fr
+        1fr
+        1fr
+        1fr;
+
+    align-items:center;
+    padding:22px 28px;
+    border-bottom:1px solid #f1f5f9;
+    transition:.25s;
+}
+
+.employee-card:hover{
+    background:#fafcff;
+}
+
+.employee-main{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.employee-avatar{
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:700;
+    font-size:18px;
+}
+
+.employee-details h4{
+    font-size:17px;
+    color:#0f172a;
+    margin-bottom:3px;
+}
+
+.employee-details p{
+    color:#64748b;
+    font-size:14px;
+}
+
+/* =========================
+   DEPARTMENT PILLS
+========================= */
+
+.department-pill{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:8px 14px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.development{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.hr{
+    background:#f3e8ff;
+    color:#9333ea;
+}
+
+.qa{
+    background:#dcfce7;
+    color:#16a34a;
+}
+
+.sales{
+    background:#ffe4e6;
+    color:#e11d48;
+}
+
+.marketing{
+    background:#ffedd5;
+    color:#ea580c;
+}
+
+.design{
+    background:#ccfbf1;
+    color:#0f766e;
+}
+
+.it{
+    background:#e0e7ff;
+    color:#4338ca;
+}
+
+.finance{
+    background:#cffafe;
+    color:#0891b2;
+}
+
+.support{
+    background:#fef3c7;
+    color:#ca8a04;
+}
+
+/* =========================
+   STATUS PILLS
+========================= */
+
+.status{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.status::before{
+    content:"";
+    width:8px;
+    height:8px;
+    border-radius:50%;
+}
+
+.active{
+    background:#ecfdf5;
+    color:#15803d;
+}
+
+.active::before{
+    background:#22c55e;
+}
+
+.leave{
+    background:#fff7ed;
+    color:#ea580c;
+}
+
+.leave::before{
+    background:#f97316;
+}
+
+.pending{
+    background:#eff6ff;
+    color:#2563eb;
+}
+
+.pending::before{
+    background:#3b82f6;
+}
+
+/* =========================
+   RATINGS
+========================= */
+
+.rating{
+    color:#fbbf24;
+    font-size:18px;
+    letter-spacing:2px;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.action-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.view-btn{
+    background:white;
+    border:1px solid #dbe4f3;
+    color:#2563eb;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.edit-btn{
+    background:white;
+    border:1px solid #dbe4f3;
+    color:#0f172a;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.view-btn:hover,
+.edit-btn:hover{
+    background:#f8fafc;
+}

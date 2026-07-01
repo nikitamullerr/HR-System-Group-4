@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Directory | ModernTech HR</title>
+    <link rel="stylesheet" href="css/employees.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo-section">
+            <div class="logo-icon">🏢</div>
+            <div>
+                <h2>ModernTech</h2>
+                <span>HR PLATFORM</span>
+            </div>
+        </div>
+
+        <nav>
+            <button class="nav-item">
+                Dashboard
+            </button>
+
+            <button class="nav-item active">
+                Employees
+            </button>
+
+            <button class="nav-item">
+                Payroll
+            </button>
+
+            <button class="nav-item">
+                Time Off
+            </button>
+
+            <button class="nav-item">
+                Reviews
+            </button>
+
+            <button class="nav-item">
+                Job Roles
+            </button>
+        </nav>
+
+        <div class="user-card">
+            <div class="avatar">HA</div>
+            <div>
+                <h4>HR Admin</h4>
+                <span>HR Manager</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Header -->
+        <header class="page-header">
+            <div>
+                <p class="section-label">PEOPLE</p>
+                <h1>Employee Directory</h1>
+                <p class="subtitle">
+                    10 employees across 8 departments.
+                </p>
+            </div>
+        </header>
+
+        <!-- Filters -->
+        <section class="filters">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by name, position or email..."
+            >
+
+            <select id="departmentFilter">
+                <option value="All">All Departments</option>
+            </select>
+
+            <select id="statusFilter">
+                <option value="All">All Statuses</option>
+                <option value="Active">Active</option>
+                <option value="Remote">Remote</option>
+                <option value="On Leave">On Leave</option>
+            </select>
+
+        </section>
+
+        <!-- Employee Table -->
+         <section class="directory-card">
+            <div class="directory-header">
+                
+                <div>Employee</div>
+                <div>Department</div>
+                <div>Status</div>
+                <div>Rating</div>
+                <div>Actions</div>
+            </div>
+            
+            <div id="employeeContainer">
+                <!-- Employees injected by JS -->
+                </div>
+         </section>
+            
+
+        <!-- Pagination -->
+        <section class="pagination">
+
+            <button id="prevPage">
+                Previous
+            </button>
+
+            <span id="pageInfo">
+                Page 1
+            </span>
+
+            <button id="nextPage">
+                Next
+            </button>
+
+        </section>
+
+    </main>
+
+    <!-- Employee Details Modal -->
+    <div class="modal-overlay" id="employeeModal">
+
+        <div class="modal">
+
+            <div class="modal-header">
+                <h2>Employee Details</h2>
+                <button id="closeModal">&times;</button>
+            </div>
+
+            <div id="modalContent">
+
+                <!-- JS injects employee details -->
+
+            </div>
+
+        </div>
+
+    </div>
+    
+    <script src="javascript/employees.js"></script>
+</body>
+</html>
