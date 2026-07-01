@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Off Management</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/leave.css">
+</head>
+<body>
+  <header class="site-header">
+  <div class="logo">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="16" rx="3"/>
+      <path d="M3 9h18M8 2v4M16 2v4"/>
+    </svg>
+    ModernTech HR
+  </div>
+  <nav class="site-nav">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="employees.html">Employees</a>
+    <a href="payroll.html">Payroll</a>
+    <a href="leave.html" class="active">Time Off</a>
+  </nav>
+</header>
+  <div class="container py-4">
+
+    <div class="timeoff-card">
+
+      <!-- Page Header -->
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/><path d="M8 13.5h2M14 13.5h2M8 17h2M14 17h2"/></svg>
+            Time Off Management
+          </h1>
+          <p class="page-sub">Review leave requests and keep track of who's out, at a glance</p>
+        </div>
+      </div>
+
+      <!-- Stat Strip -->
+      <div class="stat-strip" id="statStrip">
+        <div class="stat-pill">
+          <span class="stat-num" id="statPending">0</span>
+          <span class="stat-label">Pending requests</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-num" id="statApproved">0</span>
+          <span class="stat-label">Approved this month</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-num" id="statToday">0</span>
+          <span class="stat-label">Out today</span>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="nav-tabs-custom" role="tablist">
+        <button class="tab-btn active" data-tab="pending" role="tab">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          Pending
+        </button>
+        <button class="tab-btn" data-tab="calendar" role="tab">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+          My Calendar
+        </button>
+      </div>
+
+      <!-- ===== PENDING TAB ===== -->
+      <div class="tab-panel" data-panel="pending">
+        <div class="pending-list" id="pendingList">
+          <!-- Rendered by JS -->
+        </div>
+        <div class="empty-state d-none" id="pendingEmpty">
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg>
+          <p>All caught up — no pending requests.</p>
+        </div>
+      </div>
+
+      <!-- ===== CALENDAR TAB ===== -->
+      <div class="tab-panel d-none" data-panel="calendar">
+        <div class="calendar-wrapper">
+
+          <div class="calendar-header">
+            <div class="nav-arrows">
+              <button id="prevMonth" aria-label="Previous month"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            </div>
+            <div class="month-year" id="monthYearLabel">June 2026</div>
+            <div class="nav-arrows">
+              <button id="nextMonth" aria-label="Next month"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+
+          <div class="calendar-grid" id="calendarGrid">
+            
+          </div>
+
+          <div class="calendar-legend">
+            <span><i class="dot dot-vacation"></i> Vacation</span>
+            <span><i class="dot dot-sick"></i> Sick</span>
+            <span><i class="dot dot-personal"></i> Personal</span>
+          </div>
+
+          <!-- Selected Day Detail -->
+          <div class="day-detail" id="dayDetail">
+            <p class="day-detail-empty">Select a day on the calendar to see who's out.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-msg" id="toastMsg"></div>
+
+  <script src="javascript/leave.js"></script>
+</body>
+</html>
